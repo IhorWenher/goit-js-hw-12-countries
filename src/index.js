@@ -28,20 +28,20 @@ const add = () => {
             return responce.json();
         })
         .then(country => {
-            //if (country.length > 10) {
-            //    const myError = error({
-            //        text: "I'm an error message."
-            //    });
-            //    myError;
-            //        
-            //}
+            if (country.length > 10) {
+                console.log('Багато')
+                return
+            }
+
             if (country.length === 1) {
                 refs.countryList.insertAdjacentHTML('beforeend', createCountryMarkup(country));
                 return
             };
             if (1 < country.length <= 10) {
                 refs.countryList.insertAdjacentHTML('beforeend', createCountryListMarkup(country));
+                return
             }
+
         })
         .catch(error => {
             console.log(error);
