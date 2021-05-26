@@ -3,6 +3,8 @@ import countryMarkup from './templates/one-country.hbs';
 import coutryListMarkup from './templates/country-list.hbs';
 import '@pnotify/core/dist/BrightTheme.css';
 import { error } from '@pnotify/core';
+import { alert, Stack } from '@pnotify/core'
+import { defaults } from '@pnotify/core';
 import { debounce } from "debounce";
 
 
@@ -25,7 +27,6 @@ function createCountryListMarkup(country) {
 
 
 
-
 const add = () => {
 
     fetch(`https://restcountries.eu/rest/v2/name/${refs.input.value}`)
@@ -36,11 +37,14 @@ const add = () => {
             refs.countryList.innerHTML = "";
 
             if (country.length > 10) {
+                defaults.delay = '100';
+                defaults.sticker = false;
+
                 const myError = error({
-                    text: "To many matches found. Please enter more specific query!",
+                    text: "Too many matches found. Enter more specific query"
                 });
-                myError;
-                return
+
+                return myError;
             }
 
             if (country.length === 1) {
