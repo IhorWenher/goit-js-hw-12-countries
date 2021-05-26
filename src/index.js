@@ -1,9 +1,9 @@
 import './sass/main.scss';
+import fetchCountries from './fetchCountries';
 import countryMarkup from './templates/one-country.hbs';
 import coutryListMarkup from './templates/country-list.hbs';
 import '@pnotify/core/dist/BrightTheme.css';
 import { error } from '@pnotify/core';
-import { alert, Stack } from '@pnotify/core'
 import { defaults } from '@pnotify/core';
 import { debounce } from "debounce";
 
@@ -25,14 +25,8 @@ function createCountryListMarkup(country) {
 }
 
 
-
-
-const add = () => {
-
-    fetch(`https://restcountries.eu/rest/v2/name/${refs.input.value}`)
-        .then(responce => {
-            return responce.json();
-        })
+const addCounry = () => {
+    fetchCountries(refs.input.value)
         .then(country => {
             refs.countryList.innerHTML = "";
 
@@ -63,4 +57,4 @@ const add = () => {
         })
 }
 
-refs.input.addEventListener('input', debounce(add, 500));
+refs.input.addEventListener('input', debounce(addCounry, 500));
