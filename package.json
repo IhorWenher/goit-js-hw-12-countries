@@ -19,6 +19,8 @@
         "url": "https://github.com/goitacademy/parcel-project-template/issues"
     },
     "devDependencies": {
+        "@pnotify/animate": "^5.2.0",
+        "@pnotify/core": "^5.2.0",
         "parcel-bundler": "^1.12.5",
         "parcel-plugin-handlebars-precompile": "^1.0.2",
         "parcel-plugin-nuke-dist": "^1.0.1",
@@ -27,7 +29,7 @@
         "sass": "^1.32.8"
     },
     "dependencies": {
-        "@pnotify/core": "^5.2.0",
+        "debounce": "^1.2.1",
         "lodash.debounce": "^4.0.8"
     }
 }
