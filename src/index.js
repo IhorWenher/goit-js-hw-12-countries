@@ -5,16 +5,12 @@ import coutryListMarkup from './templates/country-list.hbs';
 import '@pnotify/core/dist/BrightTheme.css';
 import { error } from '@pnotify/core';
 import { defaults } from '@pnotify/core';
-import { debounce } from "debounce";
-
-
-
-
+import { debounce } from 'debounce';
 
 const refs = {
     input: document.querySelector('.js-input'),
-    countryList: document.querySelector('.country-list')
-}
+    countryList: document.querySelector('.country-list'),
+};
 
 function createCountryMarkup(country) {
     return country.map(countryMarkup).join('');
@@ -24,18 +20,17 @@ function createCountryListMarkup(country) {
     return country.map(coutryListMarkup).join('');
 }
 
-
 const addCounry = () => {
     fetchCountries(refs.input.value)
         .then(country => {
-            refs.countryList.innerHTML = "";
+            refs.countryList.innerHTML = '';
 
             if (country.length > 10) {
                 defaults.delay = '100';
                 defaults.sticker = false;
 
                 const myError = error({
-                    text: "Too many matches found. Enter more specific query"
+                    text: 'Too many matches found. Enter more specific query',
                 });
 
                 return myError;
@@ -43,18 +38,17 @@ const addCounry = () => {
 
             if (country.length === 1) {
                 refs.countryList.insertAdjacentHTML('beforeend', createCountryMarkup(country));
-                return
-            };
+                return;
+            }
 
             if (1 < country.length <= 10) {
                 refs.countryList.insertAdjacentHTML('beforeend', createCountryListMarkup(country));
-                return
+                return;
             }
-
         })
         .catch(error => {
             console.log(error);
-        })
-}
+        });
+};
 
 refs.input.addEventListener('input', debounce(addCounry, 500));

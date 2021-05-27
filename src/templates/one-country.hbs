@@ -1,19 +1,19 @@
-<li class="country">
-    <h2 class="country__name">{{name}}</h2>
-    <div class="country__info">
-        <div class="country_properties">
-            <span><b>Capital:</b> {{capital}}</span>
-            <span><b>Population:</b> {{population}}</span>
-            
-            <ul class="languages_list">
-                <b>Languages:</b>
-                {{#each languages}}
-                <li class="languages-list__item">{{this.name}}</li>
-                {{/each}}
-            </ul>
-        </div>
+<li class='country'>
+  <h2 class='country__name'>{{name}}</h2>
+  <div class='country__info'>
+    <div class='country_properties'>
+      <span><b>Capital:</b> {{capital}}</span>
+      <span><b>Population:</b> {{population}}</span>
 
-        <img src="{{flag}}" alt="{Флаг {name}}" class="country-flag__image" />
+      <ul class='languages_list'>
+        <b>Languages:</b>
+        {{#each languages}}
+          <li class='languages-list__item'>{{this.name}}</li>
+        {{/each}}
+      </ul>
     </div>
-    
+
+    <img src='{{flag}}' alt='{Флаг {name}}' class='country-flag__image' />
+  </div>
+
 </li>
